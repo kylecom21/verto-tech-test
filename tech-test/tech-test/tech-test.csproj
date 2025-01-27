@@ -7,4 +7,8 @@
     <RootNamespace>tech_test</RootNamespace>
   </PropertyGroup>
 
+    <ItemGroup>
+    <Content Include="App_Data\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>
