@@ -2,7 +2,8 @@ CREATE TABLE TextContent (
     Id INTEGER PRIMARY KEY AUTOINCREMENT,
     Section TEXT NOT NULL,
     Key TEXT NOT NULL,
-    Value TEXT NOT NULL
+    Value TEXT NOT NULL,
+    UNIQUE (Section, Key)
 );
 
 CREATE TABLE ImageContent (
@@ -10,17 +11,18 @@ CREATE TABLE ImageContent (
     Section TEXT NOT NULL,
     Key TEXT NOT NULL,
     ImagePath TEXT NOT NULL,
-    AltText TEXT NOT NULL
+    AltText TEXT NOT NULL,
+    UNIQUE (Section, Key)
 );
 
 INSERT INTO TextContent (Section, Key, Value) VALUES 
-('Header', 'Tabs', 'Home'),
-('Header', 'Tabs', 'Services'),
-('Header', 'Tabs', 'Sustainability'),
-('Header', 'Tabs', 'Our Work'),
-('Header', 'Tabs', 'Resources'),
-('Header', 'Tabs', 'About iOTA'),
-('Header', 'Tabs', 'Get in Touch'),
+('Header', 'Tab1', 'Home'),
+('Header', 'Tab2', 'Services'),
+('Header', 'Tab3', 'Sustainability'),
+('Header', 'Tab4', 'Our Work'),
+('Header', 'Tab5', 'Resources'),
+('Header', 'Tab6', 'About iOTA'),
+('Header', 'Tab7', 'Get in Touch'),
 
 ('Tabs', 'Top', 'HAVE A PROJECT?'),
 ('Tabs','OnImage','EXPLORE OUR WORK'),
@@ -29,6 +31,7 @@ INSERT INTO TextContent (Section, Key, Value) VALUES
 
 ('Services', 'Heading', 'Custom built design & furniture solutions'),
 ('Services', 'TxtBlock', 'Specialists in transforming commerical space into agile, functional and empowering environments'),
+('Services', 'Tab', 'WHAT WE DO'),
 ('Services', 'Heading2', 'Explore our latest work...'),
 
 ('ServicesPanel', 'Subheading', 'Case Study Name Here'),
@@ -46,11 +49,11 @@ INSERT INTO TextContent (Section, Key, Value) VALUES
 ('Footer', 'Site', 'Site by Verto'),
 ('Footer', 'Office', 'Head Office:
 The Crabtree, Quinton Green Park, Quinton,
-Northampton, NN7 2EG');
+Northampton, NN7 2EG'),
 ('Footer', 'Contact', 'Connect with Us'),
 ('Footer', 'Contact2', 'Like Us'),
 ('Footer', 'PhoneNumber', '+44(0)1604289630'),
-('Footer', 'Email', 'hello@iotaofficefurniture.co.uk'),
+('Footer', 'Email', 'hello@iotaofficefurniture.co.uk');
 
 
 INSERT INTO ImageContent (Section, Key, ImagePath, AltText) VALUES 
