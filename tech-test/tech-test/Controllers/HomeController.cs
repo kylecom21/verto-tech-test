@@ -1,31 +1,39 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using tech_test.Services;
 using tech_test.Models;
+using System.Diagnostics;
 
-namespace tech_test.Controllers;
-
-public class HomeController : Controller
+namespace tech_test.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public class HomeController : Controller
     {
-        _logger = logger;
-    }
+        private readonly DatabaseService _databaseService;
+        private readonly ILogger<HomeController> _logger;
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+        public HomeController(DatabaseService databaseService, ILogger<HomeController> logger)
+        {
+            _databaseService = databaseService;
+            _logger = logger;
+        }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+        public IActionResult Index()
+        {
+            var textContent = _databaseService.GetTextContent();
+            var imageContent = _databaseService.GetImageContent();
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var viewModel = new HomeViewModel
+            {
+                Texts = textContent,
+                Images = imageContent
+            };
+
+            return View(viewModel);
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
 }
