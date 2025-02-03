@@ -8,43 +8,92 @@
     var circleIcon = Model.Images.FirstOrDefault(i => i.Section == "Circle" && i.Key == "CircleIcons");
     var logoPng = Model.Images.FirstOrDefault(i => i.Section == "Logos" && i.Key == "LogoPNG");
     var searchIcon = Model.Images.FirstOrDefault(i => i.Section == "Search" && i.Key == "SearchIcon");
+     var topImage = Model.Images.FirstOrDefault(i => i.Section == "Gallery" && i.Key == "TopImage");
+     var tallShadow = Model.Images.FirstOrDefault(i => i.Section == "Shadows" && i.Key == "ShadowSmall");
 }
-
-@if (!string.IsNullOrEmpty(logoPng.ImagePath))
-{
-    <section class="Logo">
-        <img src="@logoPng.ImagePath" alt="@logoPng.AltText" />
-    </section>
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.5/css/foundation.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
+</head>
+<body>
+    
+    <div class="container">
 
 <header>
-    <nav>
-        <ul>
-            @foreach (var tab in Model.Texts.Where(t => t.Section == "Header" && t.Key.StartsWith("Tab")))
+    <div class="grid-x align-middle"> 
+
+        <div class="cell small-8 medium-4">
+            @if (!string.IsNullOrEmpty(logoPng.ImagePath))
             {
-                <li>@tab.Value</li>
+                <section class="logo">
+                    <img src="@logoPng.ImagePath" alt="@logoPng.AltText" />
+                </section>
             }
-        </ul>
+        </div>
+
+        <div class="cell small-12 medium-8">
+            <nav class="nav">
+                <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Header" && t.Key == "Tab1") is var tab1 && tab1 != default ? tab1.Value : "Home")</p>
+                <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Header" && t.Key == "Tab2") is var tab2 && tab2 != default ? tab2.Value : "Services")</p>
+                <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Header" && t.Key == "Tab3") is var tab3 && tab3 != default ? tab3.Value : "Sustainability")</p>
+                <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Header" && t.Key == "Tab4") is var tab4 && tab4 != default ? tab4.Value : "Our Work")</p>
+                <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Header" && t.Key == "Tab5") is var tab5 && tab5 != default ? tab5.Value : "Resources")</p>
+                <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Header" && t.Key == "Tab6") is var tab6 && tab6 != default ? tab6.Value : "About iOTA")</p>
+                <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Header" && t.Key == "Tab7") is var tab7 && tab7 != default ? tab7.Value : "Get in Touch")</p>
+            @if (!string.IsNullOrEmpty(searchIcon.ImagePath))
+            {
+                <section class="searchIcon">
+                    <img src="@searchIcon.ImagePath" alt="@searchIcon.AltText" />
+                </section>
+            }
     </nav>
+            <section class="orange-tab">
+                 <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Tabs" && t.Key == "Top") is var tabTop && tabTop != default ? tabTop.Value : "")</p>
+            </section>
+        </div>
+
+    </div>
 </header>
 
-@if (!string.IsNullOrEmpty(searchIcon.ImagePath))
+
+@if (!string.IsNullOrEmpty(topImage.ImagePath))
 {
-    <section class="SearchIcon">
-        <img src="@searchIcon.ImagePath" alt="@searchIcon.AltText" />
+    <section class="top-image__container">
+        <img src="@topImage.ImagePath" alt="@topImage.AltText" class="top-image__img" />
+        <div class="top-image__text">
+            <h1>
+                @(Model.Texts.FirstOrDefault(t => t.Section == "TxtOnImage" && t.Key == "Title") is var text && text != default ? text.Value : "")
+            </h1>
+        </div>
+        <div class="top-image__tab">
+            <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Tabs" && t.Key == "OnImage") is var tabOnImage && tabOnImage != default ? tabOnImage.Value : "")</p>
+        </div>
+
+    </section> 
+
+}
+
+@if (!string.IsNullOrEmpty(tallShadow.ImagePath))
+{
+    <section class="tallShadow">
+        <img src="@tallShadow.ImagePath" alt="@tallShadow.AltText" />
     </section>
 }
 
-<section class="hero">
-    <h1>@(Model.Texts.FirstOrDefault(t => t.Section == "TxtOnImage" && t.Key == "Title") is var text && text != default ? text.Value : "")
-</h1>
-</section>
 
-<section class="tabs">
-<p>@(Model.Texts.FirstOrDefault(t => t.Section == "Tabs" && t.Key == "Top") is var tabTop && tabTop != default ? tabTop.Value : "")</p>
-<p>@(Model.Texts.FirstOrDefault(t => t.Section == "Tabs" && t.Key == "OnImage") is var tabOnImage && tabOnImage != default ? tabOnImage.Value : "")</p>
-</section>
-
+@if (!string.IsNullOrEmpty(circleIcon.ImagePath))
+{
+    <section class="Circle">
+        <img src="@circleIcon.ImagePath" alt="@circleIcon.AltText" />
+    </section>
+}
 
 <section class="services">
     <h2>@(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "Heading") is var servicesHeading && servicesHeading != default ? servicesHeading.Value : "") </h2>
@@ -53,19 +102,7 @@
    <h3>@(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "Heading2") is var servicesHeading2 && servicesHeading2 != default ? servicesHeading2.Value : "") </h3>
 </section>
 
-<section class="gallery">
-    @foreach (var image in Model.Images.Where(img => img.Section == "Gallery"))
-    {
-        <img src="@image.ImagePath" alt="@image.AltText" />
-    }
-</section>
 
-@if (!string.IsNullOrEmpty(circleIcon.ImagePath))
-{
-    <section class="Circle">
-        <img src="@circleIcon.ImagePath" alt="@circleIcon.AltText" />
-    </section>
-}
 
 <section class="servicesPanel">
      <h4>@(Model.Texts.FirstOrDefault(t => t.Section == "ServicesPanel" && t.Key == "Subheading") is var servicesPanelHeading && servicesPanelHeading != default ? servicesPanelHeading.Value : "") </h4>
@@ -87,20 +124,32 @@
        <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Bottom" && t.Key == "Icon2") is var bottomIcon2 && bottomIcon2 != default ? bottomIcon2.Value : "")</p>
 </section>
 
-<section class="Shadows">
-    @foreach (var image in Model.Images.Where(img => img.Section == "Shadows"))
-    {
-        <img src="@image.ImagePath" alt="@image.AltText" />
-    }
-</section>
+<footer class="footer">
+    <div class="grid-x grid-padding-x align-middle">
+        <div class="cell small-12 medium-4 large-3">
+            @if (!string.IsNullOrEmpty(logoPng.ImagePath))
+        {
+         <section class="footer-logo">
+                 <img src="@logoPng.ImagePath" alt="@logoPng.AltText" />
+        </section>
+}
+            <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Copyright") is var footerCopyright && footerCopyright != default ? footerCopyright.Value : "")</p>
+             <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "T&C") is var footerTc && footerTc != default ? footerTc.Value : "")</p>
+            <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Site") is var footerSite && footerSite != default ? footerSite.Value : "")</p>
+        </div>
 
-<footer>
-    <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "T&C") is var footerTc && footerTc != default ? footerTc.Value : "")</p>
-     <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Copyright") is var footerCopyright && footerCopyright != default ? footerCopyright.Value : "")</p>
-    <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Site") is var footerSite && footerSite != default ? footerSite.Value : "")</p>
-    <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Office") is var footerOffice && footerOffice != default ? footerOffice.Value : "")</p>
-    <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Contact") is var footerContact && footerContact != default ? footerContact.Value : "")</p>
-    <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Contact2") is var footerContact2 && footerContact2 != default ? footerContact2.Value : "")</p>
-    <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "PhoneNumber") is var footerPhone && footerPhone != default ? footerPhone.Value : "")</p>
-    <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Email") is var footerEmail && footerEmail != default ? footerEmail.Value : "")</p>
+        <div class="cell small-12 medium-4 large-5">
+             <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Office") is var footerOffice && footerOffice != default ? footerOffice.Value : "")</p>
+        </div>
+
+        <div class="cell small-12 medium-4 large-4">
+            <<p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Contact") is var footerContact && footerContact != default ? footerContact.Value : "")</p>
+             <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Contact2") is var footerContact2 && footerContact2 != default ? footerContact2.Value : "")</p>
+            <p>📞 @(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "PhoneNumber") is var footerPhone && footerPhone != default ? footerPhone.Value : "")</p>
+            <p>📧 @(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Email") is var footerEmail && footerEmail != default ? footerEmail.Value : "")</p>
+        </div>
+    </div>
 </footer>
+
+    </body>
+</html>
