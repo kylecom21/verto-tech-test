@@ -27,7 +27,9 @@ INSERT INTO TextContent (Section, Key, Value) VALUES
 ('Tabs', 'Top', 'HAVE A PROJECT?'),
 ('Tabs','OnImage','EXPLORE OUR WORK'),
 
-('TxtOnImage', 'Title', 'Creating Exceptional Workspaces'),
+('TxtOnImage', 'Title', 'Creating Exceptional 
+
+Workspaces'),
 
 ('Services', 'Heading', 'Custom built design & furniture solutions'),
 ('Services', 'TxtBlock', 'Specialists in transforming commerical space into agile, functional and empowering environments'),
@@ -42,7 +44,7 @@ INSERT INTO TextContent (Section, Key, Value) VALUES
 ('Bottom', 'Content', 'Find out whoe we are, why we do it and why we love what we do.'),
 
 ('Bottom', 'Icon1', 'WATCH THE VIDEO'),
-('Bottom', 'Icon2', '“ABOUT iOTA.”'),
+('Bottom', 'Icon2', 'ABOUT iOTA'),
 
 ('Footer', 'T&C', 'Terms & Conditions'),
 ('Footer', 'Copyright', '© iOTA Interiors Limited iOTA Office Furniture'),
