@@ -47,13 +47,13 @@
                 <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Header" && t.Key == "Tab5") is var tab5 && tab5 != default ? tab5.Value : "Resources")</p>
                 <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Header" && t.Key == "Tab6") is var tab6 && tab6 != default ? tab6.Value : "About iOTA")</p>
                 <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Header" && t.Key == "Tab7") is var tab7 && tab7 != default ? tab7.Value : "Get in Touch")</p>
+    </nav>
             @if (!string.IsNullOrEmpty(searchIcon.ImagePath))
             {
                 <section class="searchIcon">
                     <img src="@searchIcon.ImagePath" alt="@searchIcon.AltText" />
                 </section>
             }
-    </nav>
             <section class="orange-tab">
                  <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Tabs" && t.Key == "Top") is var tabTop && tabTop != default ? tabTop.Value : "")</p>
             </section>
