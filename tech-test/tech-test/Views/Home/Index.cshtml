@@ -69,7 +69,7 @@
         <img src="@topImage.ImagePath" alt="@topImage.AltText" class="top-image__img" />
         <div class="top-image__text">
             <h1>
-                @(Model.Texts.FirstOrDefault(t => t.Section == "TxtOnImage" && t.Key == "Title") is var text && text != default ? text.Value : "")
+                @Html.Raw(Model.Texts.FirstOrDefault(t => t.Section == "TxtOnImage" && t.Key == "Title") is var text && text != default ? text.Value : "")
             </h1>
         </div>
         <div class="top-image__tab">
@@ -99,10 +99,10 @@
 
     <div class="services-content"> 
         <h2>
-            @(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "Heading") is var servicesHeading && servicesHeading != default ? servicesHeading.Value : "")
+            @Html.Raw(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "Heading") is var servicesHeading && servicesHeading != default ? servicesHeading.Value : "")
         </h2>
         <p>
-            @(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "TxtBlock") is var servicesTxt && servicesTxt != default ? servicesTxt.Value : "")
+            @Html.Raw(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "TxtBlock") is var servicesTxt && servicesTxt != default ? servicesTxt.Value : "")
         </p>
 
         <a href="#" class="button">

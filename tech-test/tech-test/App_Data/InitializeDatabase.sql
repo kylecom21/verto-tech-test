@@ -27,12 +27,10 @@ INSERT INTO TextContent (Section, Key, Value) VALUES
 ('Tabs', 'Top', 'HAVE A PROJECT?'),
 ('Tabs','OnImage','EXPLORE OUR WORK'),
 
-('TxtOnImage', 'Title', 'Creating Exceptional 
+('TxtOnImage', 'Title', 'Creating Exceptional <br> Workspaces'),
 
-Workspaces'),
-
-('Services', 'Heading', 'Custom built design & furniture solutions'),
-('Services', 'TxtBlock', 'Specialists in transforming commerical space into agile, functional and empowering environments'),
+('Services', 'Heading', 'Custom built design <br> & furniture solutions'),
+('Services', 'TxtBlock', 'Specialists in transforming commerical space into <br> agile, functional and empowering environments'),
 ('Services', 'Tab', 'WHAT WE DO'),
 ('Services', 'Heading2', 'Explore our latest work...'),
 
