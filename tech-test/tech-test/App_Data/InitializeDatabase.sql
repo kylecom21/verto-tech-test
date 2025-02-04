@@ -38,11 +38,16 @@ INSERT INTO TextContent (Section, Key, Value) VALUES
 ('ServicesPanel', 'Description', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores'),
 ('ServicesPanel', 'Footer', 'VIEW MORE'),
 
+("Bottom" , 'IconTxt1', "Office"),
+("Bottom" , 'IconTxt2', "Education"),
+("Bottom" , 'IconTxt3', "Healthcare"),
+("Bottom" , 'IconTxt4', "Hospitality"),
+
 ('Bottom', 'Heading', 'Discover more about iOTA'),
 ('Bottom', 'Content', 'Find out whoe we are, why we do it and why we love what we do.'),
 
-('Bottom', 'Icon1', 'WATCH THE VIDEO'),
-('Bottom', 'Icon2', 'ABOUT iOTA'),
+('Bottom', 'Tab1', 'WATCH THE VIDEO'),
+('Bottom', 'Tab2', 'ABOUT iOTA'),
 
 ('Footer', 'T&C', 'Terms & Conditions'),
 ('Footer', 'Copyright', '© iOTA Interiors Limited iOTA Office Furniture'),
