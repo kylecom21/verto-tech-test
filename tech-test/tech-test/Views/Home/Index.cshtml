@@ -87,22 +87,34 @@
     </section>
 }
 
+<div class="services-container">
+    <div class="circle-container">
+        @if (!string.IsNullOrEmpty(circleIcon.ImagePath))
+        {
+            <section class="Circle">
+                <img src="@circleIcon.ImagePath" alt="@circleIcon.AltText" />
+            </section>
+        }
+    </div>
 
-@if (!string.IsNullOrEmpty(circleIcon.ImagePath))
-{
-    <section class="Circle">
-        <img src="@circleIcon.ImagePath" alt="@circleIcon.AltText" />
-    </section>
-}
+    <div class="services-content"> 
+        <h2>
+            @(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "Heading") is var servicesHeading && servicesHeading != default ? servicesHeading.Value : "")
+        </h2>
+        <p>
+            @(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "TxtBlock") is var servicesTxt && servicesTxt != default ? servicesTxt.Value : "")
+        </p>
 
-<section class="services">
-    <h2>@(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "Heading") is var servicesHeading && servicesHeading != default ? servicesHeading.Value : "") </h2>
-    <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "TxtBlock") is var servicesTxt && servicesTxt != default ? servicesTxt.Value : "") </p>
-    <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "Tab") is var servicesTab && servicesTab != default ? servicesTab.Value : "") </p>
+        <a href="#" class="button">
+            @(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "Tab") is var servicesTab && servicesTab != default ? servicesTab.Value : "")
+        </a>
+    </div>
+</div>
+
+
+
+
    <h3>@(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "Heading2") is var servicesHeading2 && servicesHeading2 != default ? servicesHeading2.Value : "") </h3>
-</section>
-
-
 
 <section class="servicesPanel">
      <h4>@(Model.Texts.FirstOrDefault(t => t.Section == "ServicesPanel" && t.Key == "Subheading") is var servicesPanelHeading && servicesPanelHeading != default ? servicesPanelHeading.Value : "") </h4>
