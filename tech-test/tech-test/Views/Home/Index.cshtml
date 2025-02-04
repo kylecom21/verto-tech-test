@@ -10,6 +10,9 @@
     var searchIcon = Model.Images.FirstOrDefault(i => i.Section == "Search" && i.Key == "SearchIcon");
      var topImage = Model.Images.FirstOrDefault(i => i.Section == "Gallery" && i.Key == "TopImage");
      var tallShadow = Model.Images.FirstOrDefault(i => i.Section == "Shadows" && i.Key == "ShadowSmall");
+      var panel1 = Model.Images.FirstOrDefault(i => i.Section == "Gallery" && i.Key == "PanelImage1");
+      var panel2 = Model.Images.FirstOrDefault(i => i.Section == "Gallery" && i.Key == "PanelImage2");
+      var panel3 = Model.Images.FirstOrDefault(i => i.Section == "Gallery" && i.Key == "PanelImage3");
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -114,20 +117,67 @@
 
 
 
-   <h3>@(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "Heading2") is var servicesHeading2 && servicesHeading2 != default ? servicesHeading2.Value : "") </h3>
+   <h3 class="case-studies-title">
+    @(Model.Texts.FirstOrDefault(t => t.Section == "Services" && t.Key == "Heading2") is var servicesHeading2 && servicesHeading2 != default ? servicesHeading2.Value : "") 
+</h3>
 
-<section class="servicesPanel">
-     <h4>@(Model.Texts.FirstOrDefault(t => t.Section == "ServicesPanel" && t.Key == "Subheading") is var servicesPanelHeading && servicesPanelHeading != default ? servicesPanelHeading.Value : "") </h4>
-     <p>@(Model.Texts.FirstOrDefault(t => t.Section == "ServicesPanel" && t.Key == "Description") is var servicesDescription && servicesDescription != default ? servicesDescription.Value : "") </p>
-    <p>@(Model.Texts.FirstOrDefault(t => t.Section == "ServicesPanel" && t.Key == "Footer") is var servicesFooter && servicesFooter != default ? servicesFooter.Value : "") </p>
-</section>
-
-<section class="Icons">
-    @foreach (var image in Model.Images.Where(img => img.Section == "Icons"))
+<div class="case-studies-container">
+    @if (!string.IsNullOrEmpty(panel1.ImagePath))
     {
-        <img src="@image.ImagePath" alt="@image.AltText" />
+        <div class="case-study-card">
+            <section class="panel1img">
+                <img src="@panel1.ImagePath" alt="@panel1.AltText" class="case-study-image" />
+            </section>
+            <div class="case-study-content">
+                <h4 class="case-study-subtitle">
+                    @(Model.Texts.FirstOrDefault(t => t.Section == "ServicesPanel" && t.Key == "Subheading") is var servicesPanelHeading1 && servicesPanelHeading1 != default ? servicesPanelHeading1.Value : "")
+                </h4>
+                <p class="case-study-description">
+                    @(Model.Texts.FirstOrDefault(t => t.Section == "ServicesPanel" && t.Key == "Description") is var servicesDescription1 && servicesDescription1 != default ? servicesDescription1.Value : "")
+                </p>
+                <p class="case-study-footer">
+                    @(Model.Texts.FirstOrDefault(t => t.Section == "ServicesPanel" && t.Key == "Footer") is var servicesFooter && servicesFooter != default ? servicesFooter.Value : "")
+                </p>
+            </div>
+        </div>
     }
-</section>
+
+    @if (!string.IsNullOrEmpty(panel2.ImagePath))
+    {
+        <div class="case-study-card">
+            <section class="panel1img">
+                <img src="@panel2.ImagePath" alt="@panel2.AltText" class="case-study-image" />
+            </section>
+            <div class="case-study-content">
+                <h4 class="case-study-subtitle">
+                    @(Model.Texts.FirstOrDefault(t => t.Section == "ServicesPanel" && t.Key == "Subheading") is var servicesPanel2Heading && servicesPanel2Heading != default ? servicesPanel2Heading.Value : "")
+                </h4>
+                <p class="case-study-footer">
+                    @(Model.Texts.FirstOrDefault(t => t.Section == "ServicesPanel" && t.Key == "Footer") is var servicesFooter2 && servicesFooter2 != default ? servicesFooter2.Value : "")
+                </p>
+            </div>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(panel3.ImagePath))
+    {
+        <div class="case-study-card">
+            <section class="panel1img">
+                <img src="@panel3.ImagePath" alt="@panel3.AltText" class="case-study-image" />
+            </section>
+            <div class="case-study-content">
+                <h4 class="case-study-subtitle">
+                    @(Model.Texts.FirstOrDefault(t => t.Section == "ServicesPanel" && t.Key == "Subheading") is var servicesPanel3Heading && servicesPanel3Heading != default ? servicesPanel3Heading.Value : "")
+                </h4>
+                <p class="case-study-footer">
+                    @(Model.Texts.FirstOrDefault(t => t.Section == "ServicesPanel" && t.Key == "Footer") is var servicesFooter3 && servicesFooter3 != default ? servicesFooter3.Value : "")
+                </p>
+            </div>
+        </div>
+    }
+</div>
+
+
 
 <section class = "bottom">
     <h5>@(Model.Texts.FirstOrDefault(t => t.Section == "Bottom" && t.Key == "Heading") is var bottomHeading && bottomHeading != default ? bottomHeading.Value : "")</h5>
@@ -135,6 +185,7 @@
       <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Bottom" && t.Key == "Icon1") is var bottomIcon1 && bottomIcon1 != default ? bottomIcon1.Value : "")</p>
        <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Bottom" && t.Key == "Icon2") is var bottomIcon2 && bottomIcon2 != default ? bottomIcon2.Value : "")</p>
 </section>
+
 
 <footer class="footer">
     <div class="grid-x grid-padding-x align-middle">
