@@ -286,6 +286,80 @@ header {
     width: 40px; 
 }
 
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-grow: 0 !important;
+    align-items: flex-start;
+}
+
+/* Background Image */
+.hero-bg {
+    width: 100%;
+    height: auto   ; 
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    width: 80%;
+    max-width: 900px;
+}
+
+.bottom-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.bottom-text {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.bottom-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background-color: #18BEAB;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
 
 .footer {
     width: 100%;

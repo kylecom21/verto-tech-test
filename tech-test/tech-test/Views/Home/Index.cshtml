@@ -9,7 +9,7 @@
     var logoPng = Model.Images.FirstOrDefault(i => i.Section == "Logos" && i.Key == "LogoPNG");
     var searchIcon = Model.Images.FirstOrDefault(i => i.Section == "Search" && i.Key == "SearchIcon");
     var topImage = Model.Images.FirstOrDefault(i => i.Section == "Gallery" && i.Key == "TopImage");
-    var tallShadow = Model.Images.FirstOrDefault(i => i.Section == "Shadows" && i.Key == "ShadowSmall");
+    var tallShadow = Model.Images.FirstOrDefault(i => i.Section == "Shadows" && i.Key == "ShadowTall");
     var panel1 = Model.Images.FirstOrDefault(i => i.Section == "Gallery" && i.Key == "PanelImage1");
     var panel2 = Model.Images.FirstOrDefault(i => i.Section == "Gallery" && i.Key == "PanelImage2");
     var panel3 = Model.Images.FirstOrDefault(i => i.Section == "Gallery" && i.Key == "PanelImage3");
@@ -212,21 +212,39 @@
     }
 </div>
 
-
 @if (!string.IsNullOrEmpty(bottomImage.ImagePath))
-    {
-            <section>
-                <img src="@bottomImage.ImagePath" alt="@bottomImage.AltText"/>
-            </section>
+{
+    <section class="hero-section">
+        <img src="@bottomImage.ImagePath" alt="@bottomImage.AltText" class="hero-bg"/>
+
+        <div class="hero-overlay">
+            <h5 class="bottom-heading">
+                @(Model.Texts.FirstOrDefault(t => t.Section == "Bottom" && t.Key == "Heading") is var bottomHeading && bottomHeading != default ? bottomHeading.Value : "")
+            </h5>
+
+            <p class="bottom-text">
+                @(Model.Texts.FirstOrDefault(t => t.Section == "Bottom" && t.Key == "Content") is var bottomContent && bottomContent != default ? bottomContent.Value : "")
+            </p>
+
+            <div class="bottom-buttons">
+                <a href="#" class="btn btn-primary">
+                    @(Model.Texts.FirstOrDefault(t => t.Section == "Bottom" && t.Key == "Tab1") is var bottomIcon1 && bottomIcon1 != default ? bottomIcon1.Value : "")
+                </a>
+
+                <a href="#" class="btn btn-secondary">
+                    @(Model.Texts.FirstOrDefault(t => t.Section == "Bottom" && t.Key == "Tab2") is var bottomIcon2 && bottomIcon2 != default ? bottomIcon2.Value : "")
+                </a>
+            </div>
+        </div>
+        @if (!string.IsNullOrEmpty(tallShadow.ImagePath))
+{
+    <section class="tallShadow">
+        <img src="@tallShadow.ImagePath" alt="@tallShadow.AltText" />
+    </section>
+}
+    </section>
 }
 
-<section class = "bottom">
-    <h5>@(Model.Texts.FirstOrDefault(t => t.Section == "Bottom" && t.Key == "Heading") is var bottomHeading && bottomHeading != default ? bottomHeading.Value : "")</h5>
-     <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Bottom" && t.Key == "Content") is var bottomContent && bottomContent != default ? bottomContent.Value : "")</p>
-      <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Bottom" && t.Key == "Tab1") is var bottomIcon1 && bottomIcon1 != default ? bottomIcon1.Value : "")</p>
-       <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Bottom" && t.Key == "Tab2") is var bottomIcon2 && bottomIcon2 != default ? bottomIcon2.Value : "")</p>
-       
-</section>
 
 
 <footer class="footer">
