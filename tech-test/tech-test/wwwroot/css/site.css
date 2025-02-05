@@ -209,6 +209,7 @@ header {
     justify-content: center; 
     gap: 20px; 
     margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 .case-studies-title{
@@ -235,7 +236,7 @@ header {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 15px;
+    border-radius: 7px; 
 }
 
 .case-study-content {
@@ -268,4 +269,29 @@ header {
 
 .case-study-footer::after {
     content: " →";
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 15%; 
+    background-color: #29404f; 
+    padding: 30px 20px;
+    border-radius: 7px 7px 0 0; 
+}
+
+.icon-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-image {
+    width: 60px;
+    height: auto;
+}
+
+.icon-section:first-child .icon-image {
+    width: 40px; 
 }
