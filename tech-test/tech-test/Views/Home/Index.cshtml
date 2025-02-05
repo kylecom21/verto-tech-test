@@ -9,7 +9,7 @@
     var logoPng = Model.Images.FirstOrDefault(i => i.Section == "Logos" && i.Key == "LogoPNG");
     var searchIcon = Model.Images.FirstOrDefault(i => i.Section == "Search" && i.Key == "SearchIcon");
     var topImage = Model.Images.FirstOrDefault(i => i.Section == "Gallery" && i.Key == "TopImage");
-    var tallShadow = Model.Images.FirstOrDefault(i => i.Section == "Shadows" && i.Key == "ShadowTall");
+    var tallShadow = Model.Images.FirstOrDefault(i => i.Section == "Shadows" && i.Key == "ShadowSmall");
     var panel1 = Model.Images.FirstOrDefault(i => i.Section == "Gallery" && i.Key == "PanelImage1");
     var panel2 = Model.Images.FirstOrDefault(i => i.Section == "Gallery" && i.Key == "PanelImage2");
     var panel3 = Model.Images.FirstOrDefault(i => i.Section == "Gallery" && i.Key == "PanelImage3");
@@ -29,6 +29,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
 </head>
 <body>
     
@@ -55,7 +58,6 @@
                 <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Header" && t.Key == "Tab5") is var tab5 && tab5 != default ? tab5.Value : "Resources")</p>
                 <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Header" && t.Key == "Tab6") is var tab6 && tab6 != default ? tab6.Value : "About iOTA")</p>
                 <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Header" && t.Key == "Tab7") is var tab7 && tab7 != default ? tab7.Value : "Get in Touch")</p>
-    </nav>
             @if (!string.IsNullOrEmpty(searchIcon.ImagePath))
             {
                 <section class="searchIcon">
@@ -65,6 +67,7 @@
             <section class="orange-tab">
                  <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Tabs" && t.Key == "Top") is var tabTop && tabTop != default ? tabTop.Value : "")</p>
             </section>
+    </nav>
         </div>
 
     </div>
@@ -73,19 +76,30 @@
 
 @if (!string.IsNullOrEmpty(topImage.ImagePath))
 {
-    <section class="top-image__container">
-        <img src="@topImage.ImagePath" alt="@topImage.AltText" class="top-image__img" />
-        <div class="top-image__text">
-            <h1>
-                @Html.Raw(Model.Texts.FirstOrDefault(t => t.Section == "TxtOnImage" && t.Key == "Title") is var text && text != default ? text.Value : "")
-            </h1>
-        </div>
-        <div class="top-image__tab">
-            <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Tabs" && t.Key == "OnImage") is var tabOnImage && tabOnImage != default ? tabOnImage.Value : "")</p>
+    <section class="swiper-container top-image-slider">
+        <div class="swiper-wrapper">
+            @for (int i = 0; i < 3; i++) 
+            {
+                <div class="swiper-slide">
+                    <div class="top-image__container">
+                        <img src="@topImage.ImagePath" alt="@topImage.AltText" class="top-image__img" />
+                        <div class="top-image__text">
+                            <h1>
+                                @Html.Raw(Model.Texts.FirstOrDefault(t => t.Section == "TxtOnImage" && t.Key == "Title") is var text && text != default ? text.Value : "")
+                            </h1>
+                        </div>
+                        <div class="top-image__tab">
+                            <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Tabs" && t.Key == "OnImage") is var tabOnImage && tabOnImage != default ? tabOnImage.Value : "")</p>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
 
-    </section> 
-
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </section>
 }
 
 @if (!string.IsNullOrEmpty(tallShadow.ImagePath))
@@ -94,6 +108,15 @@
         <img src="@tallShadow.ImagePath" alt="@tallShadow.AltText" />
     </section>
 }
+
+
+@if (!string.IsNullOrEmpty(tallShadow.ImagePath))
+{
+    <section class="tallShadow">
+        <img src="@tallShadow.ImagePath" alt="@tallShadow.AltText" />
+    </section>
+}
+
 
 <div class="services-container">
     <div class="circle-container">
@@ -217,6 +240,11 @@
     <section class="hero-section">
         <img src="@bottomImage.ImagePath" alt="@bottomImage.AltText" class="hero-bg"/>
 
+        @if (!string.IsNullOrEmpty(tallShadow.ImagePath))
+        {
+            <img src="@tallShadow.ImagePath" alt="@tallShadow.AltText" class="hero-shadow" />
+        }
+
         <div class="hero-overlay">
             <h5 class="bottom-heading">
                 @(Model.Texts.FirstOrDefault(t => t.Section == "Bottom" && t.Key == "Heading") is var bottomHeading && bottomHeading != default ? bottomHeading.Value : "")
@@ -236,14 +264,9 @@
                 </a>
             </div>
         </div>
-        @if (!string.IsNullOrEmpty(tallShadow.ImagePath))
-{
-    <section class="tallShadow">
-        <img src="@tallShadow.ImagePath" alt="@tallShadow.AltText" />
     </section>
 }
-    </section>
-}
+
 
 
 
