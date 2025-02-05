@@ -52,9 +52,8 @@ INSERT INTO TextContent (Section, Key, Value) VALUES
 ('Footer', 'T&C', 'Terms & Conditions'),
 ('Footer', 'Copyright', '© iOTA Interiors Limited iOTA Office Furniture'),
 ('Footer', 'Site', 'Site by Verto'),
-('Footer', 'Office', 'Head Office:
-The Crabtree, Quinton Green Park, Quinton,
-Northampton, NN7 2EG'),
+('Footer', 'Office', 'Head Office:<br>
+The Crabtree, Quinton Green Park, Quinton,<br> Northampton, NN7 2EG'),
 ('Footer', 'Contact', 'Connect with Us'),
 ('Footer', 'Contact2', 'Like Us'),
 ('Footer', 'PhoneNumber', '+44(0)1604289630'),

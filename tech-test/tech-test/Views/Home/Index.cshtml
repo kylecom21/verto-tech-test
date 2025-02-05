@@ -230,31 +230,39 @@
 
 
 <footer class="footer">
-    <div class="grid-x grid-padding-x align-middle">
-        <div class="cell small-12 medium-4 large-3">
+    <div class="footer-container">
+        <div class="footer-left">
             @if (!string.IsNullOrEmpty(logoPng.ImagePath))
-        {
-         <section class="footer-logo">
-                 <img src="@logoPng.ImagePath" alt="@logoPng.AltText" />
-        </section>
-}
+            {
+                <section class="footer-logo">
+                    <img src="@logoPng.ImagePath" alt="@logoPng.AltText" />
+                </section>
+            }
             <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Copyright") is var footerCopyright && footerCopyright != default ? footerCopyright.Value : "")</p>
-             <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "T&C") is var footerTc && footerTc != default ? footerTc.Value : "")</p>
+            <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "T&C") is var footerTc && footerTc != default ? footerTc.Value : "")</p>
             <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Site") is var footerSite && footerSite != default ? footerSite.Value : "")</p>
         </div>
 
-        <div class="cell small-12 medium-4 large-5">
-             <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Office") is var footerOffice && footerOffice != default ? footerOffice.Value : "")</p>
+        <div class="footer-middle">
+            <p>@Html.Raw(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Office") is var footerOffice && footerOffice != default ? footerOffice.Value : "")</p>
         </div>
 
-        <div class="cell small-12 medium-4 large-4">
-            <<p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Contact") is var footerContact && footerContact != default ? footerContact.Value : "")</p>
-             <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Contact2") is var footerContact2 && footerContact2 != default ? footerContact2.Value : "")</p>
-            <p>📞 @(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "PhoneNumber") is var footerPhone && footerPhone != default ? footerPhone.Value : "")</p>
-            <p>📧 @(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Email") is var footerEmail && footerEmail != default ? footerEmail.Value : "")</p>
+        <div class="footer-right">
+            <div class="footer-right-inner">
+                <div class="footer-contact">
+                    <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Contact") is var footerContact && footerContact != default ? footerContact.Value : "")</p>
+                    <p>@(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Contact2") is var footerContact2 && footerContact2 != default ? footerContact2.Value : "")</p>
+                </div>
+                
+            <div class="footer-contact"
+                    <p>📞 @(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "PhoneNumber") is var footerPhone && footerPhone != default ? footerPhone.Value : "")</p>
+                    <p>📧 @(Model.Texts.FirstOrDefault(t => t.Section == "Footer" && t.Key == "Email") is var footerEmail && footerEmail != default ? footerEmail.Value : "")</p>
+                </div>
+            </div>
         </div>
     </div>
 </footer>
+
 
     </body>
 </html>

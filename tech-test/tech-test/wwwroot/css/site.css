@@ -6,16 +6,6 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
-
-.footer {
-    width: 100%;
-    background-color: #333; 
-    color: white;
-    font-size: 0.75em;
-    padding: 3rem;
-    border-radius: 0 0 7px 7px; 
-}
-
 header {
     position: relative; 
     display: flex;
@@ -295,3 +285,60 @@ header {
 .icon-section:first-child .icon-image {
     width: 40px; 
 }
+
+
+.footer {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    font-size: 0.6em;
+    padding: 3.5rem;
+    border-radius: 0 0 7px 7px;
+}
+
+.footer-container {
+    max-width: 85%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.footer-left,
+.footer-middle,
+.footer-right {
+    flex: 1;
+}
+
+.footer-logo img {
+    max-width: 150px;
+    display: block;
+}
+
+.footer-middle {
+    text-align: left;
+    margin-top: 4%
+}
+
+.footer-right {
+    display: flex;
+    justify-content: end;
+    margin-top: 4%;
+    
+}
+
+.footer-right-inner {
+    display: flex;
+    gap:20px;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer p {
+    margin-bottom: 5px;
+}
+
