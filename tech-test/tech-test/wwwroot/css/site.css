@@ -453,7 +453,7 @@ position: relative;
 
 .footer-right-inner {
     display: flex;
-    gap:15px;
+    gap:50px;
 }
 
 .footer-contact {
@@ -463,5 +463,6 @@ position: relative;
 
 .footer p {
     margin-bottom: 5px;
+    white-space: nowrap;
 }
 
