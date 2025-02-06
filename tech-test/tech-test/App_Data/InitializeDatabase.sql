@@ -44,7 +44,7 @@ INSERT INTO TextContent (Section, Key, Value) VALUES
 ("Bottom" , 'IconTxt4', "Hospitality"),
 
 ('Bottom', 'Heading', 'Discover more about iOTA'),
-('Bottom', 'Content', 'Find out whoe we are, why we do it and why we love what we do.'),
+('Bottom', 'Content', 'Find out who we are, why we do it and why we love what we do.'),
 
 ('Bottom', 'Tab1', 'WATCH THE VIDEO'),
 ('Bottom', 'Tab2', 'ABOUT iOTA'),

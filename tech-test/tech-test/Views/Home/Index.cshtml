@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
@@ -98,14 +99,6 @@
         <div class="swiper-pagination"></div>
     </section>
 }
-
-@if (!string.IsNullOrEmpty(tallShadow.ImagePath))
-{
-    <section class="tallShadow">
-        <img src="@tallShadow.ImagePath" alt="@tallShadow.AltText" />
-    </section>
-}
-
 
 @if (!string.IsNullOrEmpty(tallShadow.ImagePath))
 {
@@ -261,7 +254,7 @@
                 </a>
             </div>
         </div>
-    </section>
+</section>
 }
 
 
@@ -303,20 +296,20 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
     var swiper = new Swiper(".top-image-slider", {
-    loop: true, // Infinite loop
+    loop: true,
     autoplay: {
-        delay: 3000, // 3 seconds per slide
+        delay: 3000, 
         disableOnInteraction: false,
     },
-    slidesPerView: 1, // Only one slide visible at a time
-    spaceBetween: 0, // No extra spacing between slides
-    centeredSlides: true, // Keep slide centered
+    slidesPerView: 1, 
+    spaceBetween: 0, 
+    centeredSlides: true, 
     
     pagination: {
         el: ".swiper-pagination",
         clickable: true,
     },
-    effect: "fade", // Smooth fading transition instead of sliding
+    effect: "fade", 
     fadeEffect: {
         crossFade: true,
     },
